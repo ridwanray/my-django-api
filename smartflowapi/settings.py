@@ -27,7 +27,7 @@ SECRET_KEY = 'c_l12vqe3#id1j8b*ws#%&_zu01qzy$*d_4==5_x0do%q_l_+-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['hommiespace-env.us-west-2.elasticbeanstalk.com','127.0.0.1','smartflow-4f8db.web.ap','http://hommiespace-env.us-west-2.elasticbeanstalk.com']
 AUTH_USER_MODEL = 'accounts.CustomUser' # new 
 
 # Application definition
@@ -121,12 +121,25 @@ WSGI_APPLICATION = 'smartflowapi.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'ebdb',
+            'USER': 'masterray',
+            'PASSWORD': 'akinolaray',
+            'HOST': 'aaf8nf9yzhvux6.cjkmjobxoovx.us-west-2.rds.amazonaws.com',
+            'PORT': '5432',
+        }
+    }  
 
+
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -167,4 +180,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 SITE_ID=1
 
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
+
+# CORS_ALLOW_ALL_ORIGINS = Trues
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000', 'https://smartflow-4f8db.web.app','http://hommiespace-env.us-west-2.elasticbeanstalk.com'
+]
+ # If this is used, then not need to use `CORS_ALLOW_ALL_ORIGINS = True`
